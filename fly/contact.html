@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - FlyNation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: url('https://www.explore.com/img/gallery/the-50-most-incredible-landscapes-in-the-whole-entire-world/intro-1672072042.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 40px;
+      height: 90px;
+      background-color: #00a8e8;
+      color: white;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    #logo img {
+      width: 80px;
+      height: auto;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+      transform: scale(1.1);
+    }
+
+    .contact-box {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 40px;
+      width: 90%;
+      max-width: 500px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .contact-box h2 {
+      text-align: center;
+      color: white;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    .input-group input,
+    .input-group textarea {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+      background: rgba(255,255,255,0.2);
+      color: white;
+    }
+
+    .input-group label {
+      position: absolute;
+      top: 50%;
+      left: 15px;
+      transform: translateY(-50%);
+      color: #ddd;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .input-group input:focus + label,
+    .input-group input:not(:placeholder-shown) + label,
+    .input-group textarea:focus + label,
+    .input-group textarea:not(:placeholder-shown) + label {
+      top: -8px;
+      left: 10px;
+      font-size: 0.8rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 0 5px;
+      border-radius: 5px;
+      color: #fff;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background: #00bcd4;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #0097a7;
+    }
+
+    .social-icons {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .social-icons a {
+      color: white;
+      margin: 0 10px;
+      font-size: 1.5rem;
+      transition: transform 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.2);
+    }
+    #chat-bot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    font-family: Arial, sans-serif;
+  }
+
+  #chat-toggle {
+    background: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  }
+
+  #chat-box {
+    width: 300px;
+    height: 400px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  #chat-header {
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  #chat-body {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+  }
+
+  #chat-input {
+    border: none;
+    border-top: 1px solid #ccc;
+    padding: 10px;
+    outline: none;
+  }
+  </style>
+  <script>
+    function sendMessage() {
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+
+      if (!name || !email || !message) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      alert(`✅ Message sent!\nThanks ${name}, we’ll get back to you soon.`);
+      document.getElementById("name").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("message").value = "";
+    }
+  </script>
+  <!-- Add FontAwesome for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header>
+    <div id="logo">
+      <img src="image-removebg-preview.png" alt="FlyNation Logo" />
+    </div>
+    <nav>
+      <a href="test.html">Home</a>
+      <a href="about.html">About Us</a>
+      
+      <a href="service.html">book</a>
+      <a href="#">Contact</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+  <div class="contact-box">
+    <h2>Contact Us</h2>
+    <div class="input-group">
+      <input type="text" id="name" placeholder=" " required>
+      <label for="name">Your Name</label>
+    </div>
+    <div class="input-group">
+      <input type="email" id="email" placeholder=" " required>
+      <label for="email">Your Email</label>
+    </div>
+    <div class="input-group">
+      <textarea id="message" placeholder=" " required></textarea>
+      <label for="message">Your Message</label>
+    </div>
+    <button class="btn" onclick="sendMessage()">Send Message</button>
+
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fas fa-phone"></i></a>
+    </div>
+    <div id="chat-bot-container">
+  <div id="chat-toggle" onclick="toggleChat()">💬</div>
+  <div id="chat-box" style="display: none;">
+    <div id="chat-header">FlyNation Bot 🤖</div>
+    <div id="chat-body"></div>
+    <input type="text" id="chat-input" placeholder="Type a message..." onkeypress="handleKey(event)">
+  </div>
+</div>
+  </div>
+
+<script src="chat_bot.js"></script>
+</body>
+</html>

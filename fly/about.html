@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - FlyNation</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f8fb;
+      color: #333;
+    }
+
+    header {
+      background-color: #00a8e8;
+      color: white;
+      
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    #logo img {
+      width: 80px;
+      height: auto;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-right: 20px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 120px auto 60px;
+      padding: 0 20px;
+    }
+
+    h1 {
+      color: #00a8e8;
+      margin-bottom: 10px;
+    }
+
+    .intro, .vision, .mission, .journey, .commitment {
+      margin-bottom: 40px;
+    }
+
+    .intro p, .vision p, .mission p, .journey p, .commitment p {
+      font-size: 18px;
+      line-height: 1.7;
+      text-align: justify;
+    }
+
+    footer {
+      background-color: #0a2e4b;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #00a8e8;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+    #chat-bot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    font-family: Arial, sans-serif;
+  }
+
+  #chat-toggle {
+    background: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  }
+
+  #chat-box {
+    width: 300px;
+    height: 400px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  #chat-header {
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  #chat-body {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+  }
+
+  #chat-input {
+    border: none;
+    border-top: 1px solid #ccc;
+    padding: 10px;
+    outline: none;
+  }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div id="logo">
+      <img src="image-removebg-preview.png" alt="">
+    </div>
+    <nav>
+      <a href="test.html">Home</a>
+      <a href="#">About Us</a>
+      <a href="service.html">Book</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <section class="intro">
+      <h1>About FlyNation</h1>
+      <p>
+        Welcome to <strong>FlyNation</strong> – your trusted travel partner in the skies. We are passionate about making air travel more accessible, affordable, and enjoyable for everyone. Whether you're booking a flight for business, leisure, or a family vacation, FlyNation ensures a smooth and reliable experience from departure to arrival.
+      </p>
+    </section>
+
+    <section class="vision">
+      <h1>Our Vision</h1>
+      <p>
+        At FlyNation, we envision a world where borders are no longer boundaries but bridges that connect people, cultures, and opportunities. We strive to be a global leader in travel innovation, reshaping the aviation experience through customer-first services, advanced technology, and sustainable practices. Our vision is to inspire people to explore the world with confidence, comfort, and care.
+      </p>
+    </section>
+
+    <section class="mission">
+      <h1>Our Mission</h1>
+      <p>
+        Our mission is simple: to bring people together through flight. We are committed to providing seamless booking, real-time flight updates, and an exceptional customer journey. Our platform is designed to make travel planning easier, faster, and more personalized. Every decision we make is guided by our mission to simplify air travel and make every trip memorable.
+      </p>
+    </section>
+
+    <section class="journey">
+      <h1>Our Journey</h1>
+      <p>
+        Founded by four visionary women — <strong>Olga</strong>, <strong>Deborah</strong>, <strong>Bella</strong>, and <strong>Belise</strong> — FlyNation started as a dream to revolutionize the travel experience in Africa and beyond. From humble beginnings and late-night planning sessions to a growing user base and trusted airline partnerships, our journey has been one of courage, creativity, and commitment to excellence.
+      </p>
+      <p>
+        We have worked tirelessly to build a platform that not only connects people but also empowers them to travel smarter. Today, FlyNation continues to grow, powered by passion, innovation, and the belief that the sky is not the limit — it's just the beginning.
+      </p>
+    </section>
+
+    <section class="commitment">
+      <h1>Our Commitment</h1>
+      <p>
+        We are more than a flight booking service — we are your travel companion. Our team is dedicated to 24/7 customer support, data protection, and transparent pricing. With FlyNation, you can expect:
+        <ul>
+          <li> Real-time flight availability and booking</li>
+          <li> Trusted airline partners</li>
+          <li> Fast and secure payment systems</li>
+          <li>Affordable prices with no hidden fees</li>
+          <li> A user-friendly interface for every traveler</li>
+        </ul>
+      </p>
+      <p>
+        Let FlyNation be your takeoff point for your next adventure. We're not just flying you to your destination — we're helping you discover the world.
+      </p>
+    </section>
+  </div>
+<div id="chat-bot-container">
+  <div id="chat-toggle" onclick="toggleChat()">💬</div>
+  <div id="chat-box" style="display: none;">
+    <div id="chat-header">FlyNation Bot 🤖</div>
+    <div id="chat-body"></div>
+    <input type="text" id="chat-input" placeholder="Type a message..." onkeypress="handleKey(event)">
+  </div>
+</div>
+  <footer>
+    <p>&copy; 2025 FlyNation. All rights reserved.</p>
+    <p>
+      <a href="https://facebook.com">Facebook</a> |
+      <a href="https://instagram.com">Instagram</a> |
+      <a href="mailto:info@flynation.com">Email Us</a>
+    </p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FlyNation Booking</title>
+  <style>
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #f5fcff, #d1efff);
+      color: #333;
+      padding: 30px;
+    }
+
+   header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 40px;
+      height: 90px;
+      background-color: #00a8e8;
+      color: white;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      
+    }
+
+    #logo img {
+      width: 80px;
+      height: auto;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+      transform: scale(1.1);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      margin-top: 70px;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 14px;
+      height: 350px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      margin: 15px 0 10px;
+      color: #007acc;
+    }
+
+    .card p {
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+
+    .btn {
+      background-color: #00a8e8;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background-color: #007bb5;
+    }
+
+    /* Booking form overlay */
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-container {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      position: relative;
+      animation: slideIn 0.5s ease forwards;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .form-container h2 {
+      margin-bottom: 20px;
+      color: #007acc;
+      text-align: center;
+    }
+
+    .form-container input, .form-container select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 20px;
+      background: transparent;
+      border: none;
+      color: #888;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      color: #000;
+    }
+
+    .form-container .btn {
+      width: 100%;
+    }
+    #chat-bot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    font-family: Arial, sans-serif;
+  }
+
+  #chat-toggle {
+    background: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  }
+
+  #chat-box {
+    width: 300px;
+    height: 400px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  #chat-header {
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  #chat-body {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+  }
+
+  #chat-input {
+    border: none;
+    border-top: 1px solid #ccc;
+    padding: 10px;
+    outline: none;
+  }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div id="logo">
+      <img src="image-removebg-preview.png" alt="FlyNation Logo" />
+    </div>
+    <nav>
+      <a href="test.html">Home</a>
+      <a href="about.html">About Us</a>
+      
+      <a href="service.html">book</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <div class="cards" id="cardsContainer">
+    <!-- Cards will be inserted here -->
+  </div>
+
+  <!-- Booking Form Overlay -->
+  <div class="overlay" id="formOverlay">
+    <div class="form-container">
+      <button class="close-btn" onclick="closeForm()">×</button>
+      <h2>Book Your Flight</h2>
+      <input type="text" id="name" placeholder="Your Name">
+      <input type="email" id="email" placeholder="Email Address">
+      <input type="date" id="date">
+      <select id="seat">
+        <option value="">Select Seat Class</option>
+        <option value="Economy">Economy</option>
+        <option value="Business">Business</option>
+        <option value="First">First Class</option>
+      </select>
+      <button class="btn" onclick="submitBooking()">Submit Booking</button>
+    </div>
+  </div>
+<div id="chat-bot-container">
+  <div id="chat-toggle" onclick="toggleChat()">💬</div>
+  <div id="chat-box" style="display: none;">
+    <div id="chat-header">FlyNation Bot 🤖</div>
+    <div id="chat-body"></div>
+    <input type="text" id="chat-input" placeholder="Type a message..." onkeypress="handleKey(event)">
+  </div>
+</div>
+  <script>
+    const flights = [
+      {
+        airline: "FlyBooster 900",
+        from: "Kigali",
+        to: "Johannesburg",
+        time: "10:30 AM",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR57rlygiiGZYZOehToKqbhplRB6ND7ub2CLg&s"
+      },
+      {
+        airline: "SkyLine Jet",
+        from: "Nairobi",
+        to: "Accra",
+        time: "1:45 PM",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvGTVJj-A6xO4JgAOV0l0sn_WEJZTIzEE8Jw&s"
+      },
+      {
+        airline: "BlueHorizon",
+        from: "Lagos",
+        to: "Cairo",
+        time: "6:00 AM",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1rCH2JBK2gQm7ugfCzyEXWD9_udwKb_GmSQ&s"
+      },
+      {
+        airline: "FlyBooster 900",
+        from: "Kigali",
+        to: "Johannesburg",
+        time: "10:30 AM",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR57rlygiiGZYZOehToKqbhplRB6ND7ub2CLg&s"
+      },
+      {
+        airline: "SkyLine Jet",
+        from: "Nairobi",
+        to: "Accra",
+        time: "1:45 PM",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvGTVJj-A6xO4JgAOV0l0sn_WEJZTIzEE8Jw&s"
+      },
+      {
+        airline: "BlueHorizon",
+        from: "Lagos",
+        to: "Cairo",
+        time: "6:00 AM",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1rCH2JBK2gQm7ugfCzyEXWD9_udwKb_GmSQ&s"
+      }
+      
+    ];
+
+    const cardsContainer = document.getElementById('cardsContainer');
+    const formOverlay = document.getElementById('formOverlay');
+
+    flights.forEach(flight => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <img src="${flight.img}" alt="Plane">
+        <h3>${flight.airline}</h3>
+        <p><strong>From:</strong> ${flight.from}</p>
+        <p><strong>To:</strong> ${flight.to}</p>
+        <p><strong>Departure:</strong> ${flight.time}</p>
+        <button class="btn" onclick="openForm('${flight.airline}')">Book Now</button>
+      `;
+      cardsContainer.appendChild(card);
+    });
+
+    let currentFlight = "";
+
+    function openForm(flightName) {
+      currentFlight = flightName;
+      formOverlay.style.display = 'flex';
+    }
+
+    function closeForm() {
+      formOverlay.style.display = 'none';
+    }
+
+    function submitBooking() {
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const date = document.getElementById("date").value;
+      const seat = document.getElementById("seat").value;
+
+      if (!name || !email || !date || !seat) {
+        alert("Please fill in all fields!");
+        return;
+      }
+
+      alert(`🎉 Booking confirmed!\nName: ${name}\nFlight: ${currentFlight}\nDate: ${date}\nClass: ${seat}`);
+      closeForm();
+    }
+  </script>
+
+<script src="chat_bot.js"></script>
+</body>
+</html>
